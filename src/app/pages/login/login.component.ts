@@ -1,0 +1,24 @@
+import { Component } from '@angular/core';
+import { DefaultLoginLayoutComponent } from '../../components/default-login-layout/default-login-layout.component';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
+import { PrimaryButtonComponent } from '../../components/primary-button/primary-button.component';
+
+@Component({
+  selector: 'app-login',
+  standalone: true,
+  imports: [DefaultLoginLayoutComponent, ReactiveFormsModule, PrimaryInputComponent, PrimaryButtonComponent],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
+})
+export class LoginComponent {
+  loginForm!: FormGroup
+
+  constructor(){
+    this.loginForm = new FormGroup({
+      cness: new FormControl('', [Validators.required]),
+      senha: new FormControl('', [Validators.required, Validators.minLength(7)])
+    })
+  }
+
+}

@@ -1,0 +1,24 @@
+<main>
+
+    <!-- Bottom Left Circle -->
+<div class="circle-big bottom-left">
+    <div class="circle-small bottom-left"></div>
+  </div>
+  
+  <!-- Top Right Circle -->
+  <div class="circle-big top-right">
+    <div class="circle-small top-right"></div>
+  </div>
+  
+
+    <section class="logo">
+        <img src="logosemf.png" alt="" >
+    </section>
+
+    <section class="login-box" [ngStyle]="boxSize">
+
+        <h1>{{titulo}}</h1>
+        <ng-content></ng-content>
+        <p>{{pTexto}}<a [routerLink]="aLink">{{aTexto}}</a></p>
+      </section>
+</main>

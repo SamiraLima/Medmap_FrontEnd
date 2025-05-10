@@ -1,0 +1,31 @@
+@import "../../styles/colors.scss";
+
+
+.input-wrapper {
+  margin-bottom: 70px;
+  
+  
+
+  label {
+    display: block;
+    color: $text-secund;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .input-content input {
+    padding: 12px 15px;
+    border: none;
+    background: transparent;
+    box-shadow: 10px 10px 20px $gray-box-shadow, -10px -10px 20px $white-box-shadow;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 690px; // 
+
+  }
+
+  .input-content input::placeholder{
+    font-size: 14px;
+  }
+}

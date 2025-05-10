@@ -1,0 +1,57 @@
+<app-default-login-layout
+
+    titulo="Criar Conta"
+    btnTexto="Criar"
+    pTexto="Já tem uma conta?"
+    aTexto=" Log in"
+    [boxSize]="{ width: '33%', height: '85%' }"
+    aLink="/login"
+>
+
+    <form [formGroup]="cadastroForm">
+
+
+        <app-primary-input
+            formControlName = "cness"
+            inputName="CNES"
+            type="text"
+            label="CNES"
+            placeholder="1234567"
+        >
+        </app-primary-input>
+
+        <app-primary-input
+            formControlName = "nome"
+            inputName="nome"
+            type="text"
+            label="Nome do Estabelecimento"
+            placeholder="Ubs parque fernanda"
+        >
+        </app-primary-input>
+
+        <app-primary-input
+            formControlName = "senha"
+            inputName="senha"
+            type="password"
+            label="Senha"
+            placeholder="*******"
+        >
+        </app-primary-input>
+
+        <app-primary-input
+            formControlName = "endereco"
+            inputName="endereco"
+            type="text"
+            label="Endereço"
+            placeholder="R. Dr. Benedito Matarazzo, 371 - 05854-090"
+        >
+        </app-primary-input>
+
+    </form>
+
+    <app-primary-button
+        btnTexto="Criar"
+        [btnSize]="{ width: '390px', height: '45px' }"
+    ></app-primary-button>
+    
+</app-default-login-layout>

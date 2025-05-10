@@ -1,0 +1,27 @@
+@import "../../styles/colors.scss";
+
+
+
+.area-resultados {
+  min-height: 400px; // ou o espaço necessário
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mensagem-vazia {
+  text-align: center;
+  color: $text-primary;
+  font-size: 18px;
+}
+
+.resultados {
+  padding: 32px;
+  margin-left: 75px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 45px;
+  justify-content: start; // <<< alinha o grid ao início
+  justify-items: start;   // <<< alinha os itens ao início também
+}

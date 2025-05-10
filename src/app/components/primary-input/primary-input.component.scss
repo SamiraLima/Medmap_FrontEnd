@@ -1,0 +1,28 @@
+@import "../../styles/colors.scss";
+
+.input-wrapper {
+    margin-bottom: 15px;
+    
+
+    label {
+        display: block;
+        color: $text-secund; /* Cor do label no Figma */
+        font-weight: 500;
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    input {
+        width: 100%;
+        padding: 7px 0; /* Padding apenas superior/inferior */
+        border: none;
+        border-bottom: 1px solid #91B3BF; /* Linha sutil inferior */
+        background: transparent;
+        font-size: 15px;
+
+    }
+
+    input::placeholder {
+        color: $text-primary; /* ou qualquer outra cor */
+      }
+}

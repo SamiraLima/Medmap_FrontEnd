@@ -1,0 +1,24 @@
+<app-default-cliente-pesquisa-layout
+    titulo = "Medicamentos Cadastrados"
+>
+
+    
+  <!-- Mensagem visível somente se não houver medicamentos -->
+  <p class="mensagem-vazia" *ngIf="medicamentos.length === 0">
+    Nenhum medicamento cadastrado
+  </p>
+
+  <!-- Cards exibidos somente se houver medicamentos -->
+  <div class="resultados-funcionario" *ngIf="medicamentos.length > 0">
+    <app-second-card
+      *ngFor="let medicamento of medicamentos"
+      [medicamento]="medicamento"
+    ></app-second-card>
+  </div>
+
+
+    <button class="fab" [routerLink]="['/registro']">
+        <span>+</span>
+      </button>
+      
+</app-default-cliente-pesquisa-layout>

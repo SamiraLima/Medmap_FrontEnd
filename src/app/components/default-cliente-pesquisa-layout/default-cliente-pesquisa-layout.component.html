@@ -1,0 +1,26 @@
+<main>
+    <section class="busca-section">
+
+        <h1>{{titulo}}</h1>
+        <p>{{subtitulo}}</p>
+
+        <div class="busca-input">
+            <input
+              type="text"
+              [(ngModel)]="termoBusca"
+              placeholder="Digite aqui o nome do medicamento"
+            />
+            <button >
+              <img src="search.svg" alt="">
+            </button>
+          </div>
+
+    </section>
+
+    <section class="resultados-section">
+
+        
+         <ng-content></ng-content>
+
+    </section>
+</main>

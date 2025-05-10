@@ -1,0 +1,73 @@
+@import "../../styles/colors.scss";
+
+main {
+  background-color: $gray-bg;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.busca-section {
+  background-image: url('/fundo-pesquisa.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+  padding: 50px; // 4rem
+  border-bottom-left-radius: 16px; // 1rem
+  border-bottom-right-radius: 16px; // 1rem
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+
+  h1 {
+    font-size: 26px; 
+    font-weight: bold;
+    transform: translateY(-10px);
+
+  }
+
+  p {
+    font-size: 17px;
+    
+  }
+
+  .busca-input {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px; 
+
+    input {
+      padding: 11px; 
+      width: 70%;
+      border: 1px solid #ccc;
+      border-radius: 50px 0 0 50px; 
+    }
+
+    input::placeholder {
+      color: $text-primary;
+      font-size: 14px;
+    
+    }
+
+    button {
+      background: linear-gradient(90deg, $secondary-color, $primary-color);
+      padding: 8px 22px; 
+      border: none;
+      cursor: pointer;
+      border-radius: 0 50px 50px 0;
+      box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25);
+      
+    }
+
+    button img {
+        width: 18px;
+        height: 18px;
+
+      }
+
+  }
+}
+
+

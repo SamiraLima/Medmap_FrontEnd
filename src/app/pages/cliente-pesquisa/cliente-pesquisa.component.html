@@ -1,0 +1,21 @@
+<app-default-cliente-pesquisa-layout
+  titulo = "Precisa pegar seu remédio?"
+  subtitulo = "Descubra qual  unidade de saúde mais perto de você esta o seu medicamento"
+>
+
+<div class="area-resultados">
+  <!-- Mostra a mensagem somente quando a lista estiver vazia -->
+  <p class="mensagem-vazia" *ngIf="medicamentos.length === 0">
+    Os resultados da pesquisa aparecerão aqui
+  </p>
+
+  <!-- Mostra os cards quando houver medicamentos -->
+  <div class="resultados" *ngIf="medicamentos.length > 0">
+    <app-primary-card
+      *ngFor="let medicamento of medicamentos"
+      [medicamento]="medicamento">
+    </app-primary-card>
+  </div>
+</div>
+    
+</app-default-cliente-pesquisa-layout>
