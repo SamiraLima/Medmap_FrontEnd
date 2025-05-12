@@ -1,7 +1,9 @@
 <app-default-cliente-pesquisa-layout
-  titulo = "Precisa pegar seu remédio?"
-  subtitulo = "Descubra qual  unidade de saúde mais perto de você esta o seu medicamento"
+  [titulo]="'Precisa pegar seu remédio?'"
+  [subtitulo]="'Descubra qual unidade de saúde mais perto de você esta o seu medicamento'"
+  (buscar)="filtrarMedicamentos($event)"
 >
+
 
 <div class="area-resultados">
   <!-- Mostra a mensagem somente quando a lista estiver vazia -->
