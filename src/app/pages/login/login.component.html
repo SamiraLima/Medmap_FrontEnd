@@ -1,5 +1,4 @@
 <app-default-login-layout
-
     titulo="Log In"
     btnTexto="Log In"
     pTexto="Ainda não tem uma conta?"
@@ -7,11 +6,9 @@
     [boxSize]="{ width: '33%', height: '70%' }"
     aLink="/cadastro"
 >
-
-    <form [formGroup]="loginForm">
-
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <app-primary-input
-            formControlName = "cness"
+            formControlName="cnes"
             inputName="CNES"
             type="text"
             label="CNES"
@@ -19,9 +16,12 @@
             marginBottom="20px"
         >
         </app-primary-input>
+        <div *ngIf="loginForm.get('cnes')?.hasError('required') && loginForm.get('cnes')?.touched" style="color: red;">
+            CNES é obrigatório.
+        </div>
 
         <app-primary-input
-            formControlName = "senha"
+            formControlName="senha"
             inputName="senha"
             type="password"
             label="Senha"
@@ -29,10 +29,17 @@
             marginBottom="18px"
         >
         </app-primary-input>
+        <div *ngIf="loginForm.get('senha')?.hasError('required') && loginForm.get('senha')?.touched" style="color: red;">
+            Senha é obrigatória.
+        </div>
+        <div *ngIf="loginForm.get('senha')?.hasError('minlength') && loginForm.get('senha')?.touched" style="color: red;">
+            A senha deve ter no mínimo 7 caracteres.
+        </div>
 
+        <app-primary-button
+            btnTexto="Log in"
+            [btnSize]="{ width: '390px', height: '45px' }"
+            type="submit"
+        ></app-primary-button>
     </form>
-    <app-primary-button
-        btnTexto="Log in"
-        [btnSize]="{ width: '390px', height: '45px' }"
-    ></app-primary-button>
 </app-default-login-layout>

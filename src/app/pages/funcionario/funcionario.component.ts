@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DefaultClientePesquisaLayoutComponent } from '../../components/default-cliente-pesquisa-layout/default-cliente-pesquisa-layout.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { SecondCardComponent } from '../../components/second-card/second-card.component';
-import { PrimaryCardComponent } from '../../components/primary-card/primary-card.component';
 import { NgFor, NgIf } from '@angular/common';
+import { AuthService, Medicamento } from '../../services/auth.service';
 
 @Component({
   selector: 'app-funcionario',
@@ -12,22 +12,35 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './funcionario.component.html',
   styleUrl: './funcionario.component.scss'
 })
-export class FuncionarioComponent {
+export class FuncionarioComponent implements OnInit {
+  medicamentos: Medicamento[] = [];
 
-  medicamentos = [
-    // {
-    //   id: 1,
-    //   nome: 'Desogestrel',
-    //   descricao: '0,075mg 28 comprimidos revestidos',
-    //   ativo: true
-    // },
+  constructor(private authService: AuthService, private router: Router) {}
 
-    // {
-    //   id: 2,
-    //   nome: 'Dipirona',
-    //   descricao: '0,075mg 28 comprimidos revestidos',
-    //   ativo: true
-    // }
-  ];
+  ngOnInit(): void {
+    // Verifica se o usuário está logado
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return;
+    }
 
+    // Obtém o CNES do usuário logado
+    const cnes = this.authService.getCnes();
+    if (cnes) {
+      this.authService.getMedicamentos(cnes).subscribe({
+        next: (medicamentos) => {
+          this.medicamentos = medicamentos;
+        },
+        error: (err) => {
+          console.error('Erro ao buscar medicamentos:', err);
+          alert('Erro ao carregar os medicamentos. Tente novamente.');
+          this.authService.logout();
+          this.router.navigate(['/login']);
+        }
+      });
+    } else {
+      this.authService.logout();
+      this.router.navigate(['/login']);
+    }
+  }
 }
