@@ -2,30 +2,33 @@
     titulo="Registro de Medicamento"
     aLink="/funcionario"
 >
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+        <app-second-input
+            formControlName="nome"
+            inputName="nome"
+            type="text"
+            label="Nome"
+            placeholder="Digite o nome do remédio"
+        >
+        </app-second-input>
+        <div *ngIf="registroForm.get('nome')?.hasError('required') && registroForm.get('nome')?.touched" style="color: red;">
+            Nome é obrigatório.
+        </div>
 
-    <form [formGroup]="registroForm">
+        <app-second-input
+            formControlName="descricao"
+            inputName="descricao"
+            label="Informações"
+            placeholder="Digite as informações complementares"
+        />
+        <div *ngIf="registroForm.get('descricao')?.hasError('required') && registroForm.get('descricao')?.touched" style="color: red;">
+            Informações são obrigatórias.
+        </div>
 
-    <app-second-input
-    formControlName = "nome"
-    inputName="nome"
-    type="text"
-    label="Nome"
-    placeholder="Digite o nome do remédio"
-    >
-    </app-second-input>
-
-    <app-second-input
-    formControlName="descricao"
-    inputName="descricao"
-    label="Informações"
-    placeholder="Digite as informações complementares"
-/>
-
+        <app-primary-button
+            btnTexto="Registrar"
+            [btnSize]="{ width: '490px', height: '48px' }"
+            type="submit"
+        ></app-primary-button>
     </form>
-
-    <app-primary-button
-    btnTexto="Registrar"
-    [btnSize]="{ width: '490px', height: '48px' }"
-    ></app-primary-button>
-
 </app-default-registro-medicamento-layout>

@@ -1,27 +1,26 @@
 <div class="card">
-    <div class="info">
-      <h3 class="nome">{{ medicamento.nome }}</h3>
-      <p class="descricao">{{ medicamento.descricao }}</p>
-    </div>
-  
-    <div class="acoes">
-        <div class="grupo-botoes">
-          <a [routerLink]="['/editar']">
-            <button class="editar">Editar</button>
-          </a>
-  
-            <label class="switch">
-                <input type="checkbox" [(ngModel)]="medicamento.ativo" />
-                <span class="slider"></span>
-            </label>
-        </div>
-        <button class="lixeira"><img src="lixeira.svg" alt="icone de lixeira" (click)="abrirPopup()"></button>
-    </div>
+  <div class="info">
+    <h3 class="nome">{{ medicamento.nome }}</h3>
+    <p class="descricao">{{ medicamento.informacoes }}</p>
   </div>
 
-  <!-- Popup de confirmação -->
+  <div class="acoes">
+    <div class="grupo-botoes">
+      <button class="editar" (click)="editarMedicamento()">Editar</button> <!-- Use (click) em vez de routerLink -->
+
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="medicamento.ativo" />
+        <span class="slider"></span>
+      </label>
+    </div>
+    <button class="lixeira">
+      <img src="lixeira.svg" alt="icone de lixeira" (click)="abrirPopup()" />
+    </button>
+  </div>
+</div>
+
 <app-popup-delete-medicamento
-*ngIf="showPopup"
-(cancel)="cancelarExclusao()"
-(confirm)="confirmarExclusao()">
-</app-popup-delete-medicamento>
+  *ngIf="showPopup"
+  (cancel)="cancelarExclusao()"
+  (confirm)="confirmarExclusao()"
+></app-popup-delete-medicamento>

@@ -5,37 +5,14 @@ import { RegistroMedicamentosComponent } from './pages/registro-medicamentos/reg
 import { EditarMedicamentosComponent } from './pages/editar-medicamentos/editar-medicamentos.component';
 import { ClientePesquisaComponent } from './pages/cliente-pesquisa/cliente-pesquisa.component';
 import { FuncionarioComponent } from './pages/funcionario/funcionario.component';
-
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-
-    {
-        path: "login",
-        component: LoginComponent
-    },
-
-    {
-        path: "cadastro",
-        component: CadastroComponent
-    },
-
-    {
-        path: "registro",
-        component: RegistroMedicamentosComponent
-    },
-
-    {
-        path: "editar",
-        component: EditarMedicamentosComponent
-    },
-
-    {
-        path: "cliente",
-        component: ClientePesquisaComponent
-    },
-
-    {
-        path: "funcionario",
-        component: FuncionarioComponent
-    }
+  { path: "login", component: LoginComponent },
+  { path: "cadastro", component: CadastroComponent },
+  { path: "registro", component: RegistroMedicamentosComponent, canActivate: [authGuard] },
+  { path: "editar/:id", component: EditarMedicamentosComponent, canActivate: [authGuard] }, // Adicionado :id
+  { path: "cliente", component: ClientePesquisaComponent },
+  { path: "funcionario", component: FuncionarioComponent, canActivate: [authGuard] },
+  { path: "", redirectTo: "/login", pathMatch: "full" }
 ];

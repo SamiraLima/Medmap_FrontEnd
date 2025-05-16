@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router'; // Importe o Router
 import { PopupDeleteMedicamentoComponent } from '../popup-delete-medicamento/popup-delete-medicamento.component';
 import { NgIf } from '@angular/common';
 
@@ -12,11 +12,10 @@ import { NgIf } from '@angular/common';
   styleUrl: './second-card.component.scss'
 })
 export class SecondCardComponent {
-
-  ativo: boolean = true;
   @Input() medicamento: any;
-
   showPopup = false;
+
+  constructor(private router: Router) {} // Injete o Router
 
   abrirPopup() {
     this.showPopup = true;
@@ -28,8 +27,10 @@ export class SecondCardComponent {
 
   confirmarExclusao() {
     console.log('Excluir medicamento', this.medicamento.id);
-    // Aqui você pode chamar um método do serviço para excluir o medicamento
     this.showPopup = false;
   }
-  
+
+  editarMedicamento() {
+    this.router.navigate(['/editar', this.medicamento.id]); // Navegação programática
+  }
 }

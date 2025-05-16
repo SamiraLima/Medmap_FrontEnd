@@ -1,8 +1,6 @@
 <app-default-cliente-pesquisa-layout
-    titulo = "Medicamentos Cadastrados"
+    titulo="Medicamentos Cadastrados"
 >
-
-    
   <!-- Mensagem visível somente se não houver medicamentos -->
   <p class="mensagem-vazia" *ngIf="medicamentos.length === 0">
     Nenhum medicamento cadastrado
@@ -16,9 +14,7 @@
     ></app-second-card>
   </div>
 
-
-    <button class="fab" [routerLink]="['/registro']">
-        <span>+</span>
-      </button>
-      
+  <button class="fab" [routerLink]="['/registro']">
+    <span>+</span>
+  </button>
 </app-default-cliente-pesquisa-layout>
