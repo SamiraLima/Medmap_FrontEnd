@@ -1,13 +1,17 @@
 <app-default-cliente-pesquisa-layout
     titulo="Medicamentos Cadastrados"
 >
-  <!-- Mensagem visível somente se não houver medicamentos -->
-  <p class="mensagem-vazia" *ngIf="medicamentos.length === 0">
-    Nenhum medicamento cadastrado
+  <!-- ADIÇÃO: Indicador de carregamento -->
+  <div *ngIf="isLoading" class="loading">Carregando...</div>
+
+  <!-- Mensagem visível somente se não houver medicamentos e não estiver carregando -->
+  <p class="mensagem-vazia" *ngIf="!isLoading && medicamentos.length === 0">
+    Nenhum medicamento cadastrado.
+    <a [routerLink]="['/registro']" class="cadastrar-link">Cadastrar um medicamento</a>
   </p>
 
   <!-- Cards exibidos somente se houver medicamentos -->
-  <div class="resultados-funcionario" *ngIf="medicamentos.length > 0">
+  <div class="resultados-funcionario" *ngIf="!isLoading && medicamentos.length > 0">
     <app-second-card
       *ngFor="let medicamento of medicamentos"
       [medicamento]="medicamento"

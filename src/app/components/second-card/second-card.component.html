@@ -6,10 +6,10 @@
 
   <div class="acoes">
     <div class="grupo-botoes">
-      <button class="editar" (click)="editarMedicamento()">Editar</button> <!-- Use (click) em vez de routerLink -->
+      <button class="editar" (click)="editarMedicamento()">Editar</button>
 
       <label class="switch">
-        <input type="checkbox" [(ngModel)]="medicamento.ativo" />
+        <input type="checkbox" [(ngModel)]="medicamento.ativo" (change)="atualizarStatus()" />
         <span class="slider"></span>
       </label>
     </div>
