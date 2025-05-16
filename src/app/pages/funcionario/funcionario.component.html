@@ -1,5 +1,6 @@
 <app-default-cliente-pesquisa-layout
     titulo="Medicamentos Cadastrados"
+    (buscar)="onBuscar($event)" 
 >
   <!-- ADIÇÃO: Indicador de carregamento -->
   <div *ngIf="isLoading" class="loading">Carregando...</div>
@@ -21,4 +22,4 @@
   <button class="fab" [routerLink]="['/registro']">
     <span>+</span>
   </button>
-</app-default-cliente-pesquisa-layout>
+</app-default-cliente-pesquisa-layout> 

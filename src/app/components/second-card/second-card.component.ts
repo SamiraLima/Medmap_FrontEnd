@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { PopupDeleteMedicamentoComponent } from '../popup-delete-medicamento/popup-delete-medicamento.component';
@@ -14,6 +14,7 @@ import { AuthService, Medicamento } from '../../services/auth.service';
 })
 export class SecondCardComponent {
   @Input() medicamento!: Medicamento;
+  @Output() medicamentoExcluido = new EventEmitter<number>(); // Evento para notificar exclusão
   showPopup = false;
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -27,19 +28,18 @@ export class SecondCardComponent {
   }
 
   confirmarExclusao() {
-    if (confirm('Tem certeza que deseja excluir este medicamento?')) {
-      this.authService.deletarMedicamento(this.medicamento.id).subscribe({
-        next: () => {
-          console.log('Medicamento excluído com sucesso');
-          window.location.reload(); // Recarrega a página para atualizar a lista
-        },
-        error: (err) => {
-          console.error('Erro ao excluir medicamento:', err);
-          alert('Erro ao excluir medicamento. Tente novamente.');
-        }
-      });
-    }
-    this.showPopup = false;
+    this.authService.deletarMedicamento(this.medicamento.id).subscribe({
+      next: () => {
+        console.log('Medicamento excluído com sucesso');
+        this.medicamentoExcluido.emit(this.medicamento.id); // Notifica o componente pai
+        this.showPopup = false;
+      },
+      error: (err) => {
+        console.error('Erro ao excluir medicamento:', err);
+        alert('Erro ao excluir medicamento. Tente novamente.');
+        this.showPopup = false;
+      }
+    });
   }
 
   editarMedicamento() {
