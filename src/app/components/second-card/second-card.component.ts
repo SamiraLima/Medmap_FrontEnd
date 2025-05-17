@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router'; // Importe o Router
+import { RouterModule, Router } from '@angular/router';
 import { PopupDeleteMedicamentoComponent } from '../popup-delete-medicamento/popup-delete-medicamento.component';
 import { NgIf } from '@angular/common';
+import { AuthService, Medicamento } from '../../services/auth.service';
 
 @Component({
   selector: 'app-second-card',
@@ -12,10 +13,11 @@ import { NgIf } from '@angular/common';
   styleUrl: './second-card.component.scss'
 })
 export class SecondCardComponent {
-  @Input() medicamento: any;
+  @Input() medicamento!: Medicamento;
+  @Output() medicamentoExcluido = new EventEmitter<number>(); // Evento para notificar exclusão
   showPopup = false;
 
-  constructor(private router: Router) {} // Injete o Router
+  constructor(private authService: AuthService, private router: Router) {}
 
   abrirPopup() {
     this.showPopup = true;
@@ -26,11 +28,55 @@ export class SecondCardComponent {
   }
 
   confirmarExclusao() {
-    console.log('Excluir medicamento', this.medicamento.id);
-    this.showPopup = false;
+    this.authService.deletarMedicamento(this.medicamento.id).subscribe({
+      next: () => {
+        console.log('Medicamento excluído com sucesso');
+        this.medicamentoExcluido.emit(this.medicamento.id); // Notifica o componente pai
+        this.showPopup = false;
+      },
+      error: (err) => {
+        console.error('Erro ao excluir medicamento:', err);
+        alert('Erro ao excluir medicamento. Tente novamente.');
+        this.showPopup = false;
+      }
+    });
   }
 
   editarMedicamento() {
-    this.router.navigate(['/editar', this.medicamento.id]); // Navegação programática
+    this.router.navigate(['/editar', this.medicamento.id]);
+  }
+
+  atualizarStatus() {
+    const ubsId = this.authService.getUbsId();
+    if (!ubsId) {
+      alert('Erro: UBS ID não encontrado. Faça login novamente.');
+      this.authService.logout();
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    const dadosAtualizados: Medicamento = {
+      id: this.medicamento.id,
+      nome: this.medicamento.nome,
+      informacoes: this.medicamento.informacoes,
+      imagemUrl: this.medicamento.imagemUrl,
+      ativo: this.medicamento.ativo,
+      ubsId: ubsId
+    };
+
+    this.authService.atualizarMedicamento(dadosAtualizados).subscribe({
+      next: (response) => {
+        console.log('Status do medicamento atualizado com sucesso:', response);
+      },
+      error: (err) => {
+        console.error('Erro ao atualizar status do medicamento:', {
+          status: err.status,
+          message: err.message,
+          error: err.error
+        });
+        alert('Erro ao atualizar status do medicamento. Tente novamente.');
+        this.medicamento.ativo = !this.medicamento.ativo;
+      }
+    });
   }
 }

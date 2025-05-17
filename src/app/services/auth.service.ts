@@ -69,16 +69,24 @@ export class AuthService {
     this.ubsId = storedUbsId ? parseInt(storedUbsId, 10) : null;
   }
 
-  // Método para buscar um medicamento por ID
   getMedicamentoPorId(id: number): Observable<Medicamento> {
     return this.http.get<Medicamento>(`${this.registroUrl}/${id}`, {
       headers: { Authorization: `Bearer ${this.token}` }
     });
   }
 
-  // Método para editar um medicamento
   editarMedicamento(id: number, dados: EditarMedicamentoRequest): Observable<Medicamento> {
     return this.http.put<Medicamento>(`${this.registroUrl}/${id}`, dados, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      }
+    });
+  }
+
+  atualizarMedicamento(medicamento: Medicamento): Observable<Medicamento> {
+    const url = `${this.registroUrl}/${medicamento.id}`;
+    return this.http.put<Medicamento>(url, medicamento, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.token}`
@@ -96,26 +104,35 @@ export class AuthService {
   }
 
   login(dados: LoginRequest): Observable<string> {
-  const url = `${this.loginUrl}?cnes=${dados.cnes}&password=${dados.password}`;
-  return this.http.post(url, {}, { responseType: 'text' }).pipe(
-    tap((token: string) => {
-      this.token = token;
-      this.cnes = dados.cnes;
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      this.ubsId = payload.ubsId;
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('cnes', dados.cnes);
-      if (this.ubsId !== null) { // Adicionada verificação
-        localStorage.setItem('ubsId', this.ubsId.toString());
-      }
-    })
-  );
-}
+    const url = `${this.loginUrl}?cnes=${dados.cnes}&password=${dados.password}`;
+    return this.http.post(url, {}, { responseType: 'text' }).pipe(
+      tap((token: string) => {
+        this.token = token;
+        this.cnes = dados.cnes;
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        this.ubsId = payload.ubsId;
+        localStorage.setItem('authToken', token);
+        localStorage.setItem('cnes', dados.cnes);
+        if (this.ubsId !== null) {
+          localStorage.setItem('ubsId', this.ubsId.toString());
+        }
+      })
+    );
+  }
 
   getMedicamentos(cnes: string): Observable<Medicamento[]> {
     const url = `${this.medicamentosUrl}/${cnes}/medicamentos`;
     return this.http.get<Medicamento[]>(url, {
       headers: { Authorization: `Bearer ${this.token}` }
+    });
+  }
+
+  deletarMedicamento(id: number): Observable<void> {
+    const url = `${this.registroUrl}/${id}`;
+    return this.http.delete<void>(url, {
+      headers: {
+        'Authorization': `Bearer ${this.token}`
+      }
     });
   }
 

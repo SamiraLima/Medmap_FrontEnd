@@ -13,21 +13,21 @@ import { MedicamentoService } from '../../services/medicamento.service';
 })
 export class ClientePesquisaComponent implements OnInit {
   medicamentos: any[] = [];
-  termoPesquisa: string = '';
   medicamentosOriginais: any[] = [];
+  termoPesquisa: string = '';
 
   constructor(private medicamentoService: MedicamentoService) {}
 
   ngOnInit(): void {
     this.medicamentoService.getMedicamentosComUbs().subscribe((data) => {
-      this.medicamentosOriginais = data;
-      this.medicamentos = data;  // Inicializa a lista de medicamentos
+      // filtra só os ativos ao carregar
+      this.medicamentosOriginais = data.filter(med => med.ativo === true);
+      this.medicamentos = [...this.medicamentosOriginais];
     });
   }
 
   filtrarMedicamentos(termo: string): void {
     this.termoPesquisa = termo.toLowerCase().trim();
-
     this.medicamentos = this.medicamentosOriginais.filter(med =>
       med.nome.toLowerCase().includes(this.termoPesquisa)
     );

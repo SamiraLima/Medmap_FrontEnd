@@ -22,7 +22,8 @@ export class MedicamentoService {
             nome: med.nome,
             descricao: med.informacoes,
             local: ubsInfo?.nome || 'UBS não encontrada',
-            endereco: ubsInfo?.endereco || 'Endereço não disponível'
+            endereco: ubsInfo?.endereco || 'Endereço não disponível',
+            ativo: med.ativo      // <— inclui o status no objeto
           };
         });
       })
