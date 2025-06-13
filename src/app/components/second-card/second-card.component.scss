@@ -1,128 +1,148 @@
 @import "../../styles/colors.scss";
 
-
 .card {
-    display: flex;
-    align-items:flex-start;
-    flex-direction: column;
-    background: $gray-bg;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 10px 10px 20px $gray-box-shadow, -10px -10px 20px $white-box-shadow;
-    width: 930px;
-    height: 130px;
-    gap: 15px;
-    border: none;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: clamp(300px, 85vw, 930px); /* Largura responsiva entre 300px e 930px */
+  height: 130px; /* Altura fixa mantida */
+  padding: 20px; /* Padding fixo */
+  gap: 15px; /* Espaçamento fixo */
+  background: $gray-bg;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 10px 10px 20px $gray-box-shadow, -10px -10px 20px $white-box-shadow;
+  margin: 0 auto; /* Centraliza o card */
+  box-sizing: border-box; /* Garante que o padding não afete as dimensões totais */
   
-  .info {
-    display: flex;
-    flex-direction: column;
-  
-  
-    .nome {
-      font-size: 16px;
-      font-weight: 600;
-      color: #333;
-    }
-  
-    .descricao {
-      font-size: 13px;
-      color: #777;
-      margin: 2px 0 0 0;
-    }
-  }
-  
-  .acoes {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    width: 885px;
-    
+  /* Garante que o conteúdo não ultrapasse os limites em telas pequenas */
+  overflow: hidden;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0; /* Permite que o texto quebre corretamente */
+
+  .nome {
+    font-size: 16px; /* Tamanho fixo */
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .grupo-botoes {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-
+  .descricao {
+    font-size: 13px; /* Tamanho fixo */
+    color: #777;
+    margin: 2px 0 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
+}
+
+.acoes {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px; /* Margem fixa */
   
-  .editar {
-    padding: 6px 12px;
-    font-size: 13px;
-    border: 1px solid #f56565;
-    background-color: $gray-bg;
-    color: #f56565;
-    border-radius: 9999px;
+  /* Ajuste apenas para telas muito pequenas */
+  @media (max-width: 400px) {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+.grupo-botoes {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Espaçamento fixo */
+  
+  /* Garante que os botões não quebrem */
+  flex-shrink: 0;
+}
+
+.editar {
+  padding: 6px 12px; /* Tamanho fixo */
+  font-size: 13px; /* Tamanho fixo */
+  border: 1px solid #f56565;
+  background-color: $gray-bg;
+  color: #f56565;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    background: #ffe5e5;
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px; /* Tamanho fixo */
+  height: 24px; /* Tamanho fixo */
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
     cursor: pointer;
-    transition: background 0.2s;
-  
-    &:hover {
-      background: #ffe5e5;
-    }
-  }
-  
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 44px;
-    height: 24px;
-  
-    input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-  
-    .slider {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 24px;
+    transition: 0.3s;
+
+    &::before {
       position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      border-radius: 24px;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
       transition: 0.3s;
-  
-      &::before {
-        position: absolute;
-        content: "";
-        height: 18px;
-        width: 18px;
-        left: 3px;
-        bottom: 3px;
-        background-color: white;
-        transition: 0.3s;
-        border-radius: 50%;
-      }
-    }
-  
-    input:checked + .slider {
-      background-color: #38a169;
-    }
-  
-    input:checked + .slider::before {
-      transform: translateX(20px);
-    }
-  }
-  
-  .lixeira {
-    background: transparent;
-    border: none;
-    font-size: 18px;
-    color: #888;
-    cursor: pointer;
-    transition: color 0.2s;
-  
-    &:hover {
-      color: #e53e3e;
+      border-radius: 50%;
     }
   }
 
-  img{
-    height: auto;
-    width: 25px;
+  input:checked + .slider {
+    background-color: #38a169;
   }
-  
+
+  input:checked + .slider::before {
+    transform: translateX(20px);
+  }
+}
+
+.lixeira {
+  background: transparent;
+  border: none;
+  font-size: 18px; /* Tamanho fixo */
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #e53e3e;
+  }
+}
+
+img {
+  height: auto;
+  width: 25px; /* Tamanho fixo */
+}

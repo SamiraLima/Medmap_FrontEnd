@@ -15,10 +15,11 @@
         <img src="logosemf.png" alt="" >
     </section>
 
-    <section class="login-box" [ngStyle]="boxSize">
+   <section class="login-box">
 
         <h1>{{titulo}}</h1>
         <ng-content></ng-content>
+        <button>{{btnTexto}}</button>
         <p>{{pTexto}}<a [routerLink]="aLink">{{aTexto}}</a></p>
       </section>
 </main>

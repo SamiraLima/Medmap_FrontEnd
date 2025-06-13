@@ -13,6 +13,7 @@ export class DefaultLoginLayoutComponent {
   @Input() titulo: string = "";
   @Input() aTexto: string = "";
   @Input() pTexto: string = "";
-  @Input() boxSize: { width?: string; height?: string } = {};
   @Input() aLink: string = '';
+  @Input() btnTexto: string = "";
+
 }

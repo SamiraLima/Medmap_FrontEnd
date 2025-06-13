@@ -3,7 +3,6 @@
     btnTexto="Log In"
     pTexto="Ainda não tem uma conta?"
     aTexto=" Cadrastre-se"
-    [boxSize]="{ width: '33%', height: '70%' }"
     aLink="/cadastro"
 >
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -37,8 +36,6 @@
         </div>
 
         <app-primary-button
-            btnTexto="Log in"
-            [btnSize]="{ width: '390px', height: '45px' }"
             type="submit"
         ></app-primary-button>
     </form>

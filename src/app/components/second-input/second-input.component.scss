@@ -1,10 +1,7 @@
 @import "../../styles/colors.scss";
 
-
 .input-wrapper {
   margin-bottom: 70px;
-  
-  
 
   label {
     display: block;
@@ -21,11 +18,36 @@
     box-shadow: 10px 10px 20px $gray-box-shadow, -10px -10px 20px $white-box-shadow;
     font-size: 16px;
     border-radius: 5px;
-    width: 690px; // 
 
+    width: 100%;
+    max-width: 690px; // limite máximo
   }
 
-  .input-content input::placeholder{
+  .input-content input::placeholder {
     font-size: 14px;
+  }
+
+  /* ✅ Responsividade */
+  @media (max-width: 768px) {
+    .input-content input {
+      max-width: 100%;
+      font-size: 14px;
+      padding: 10px 12px;
+    }
+
+    label {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .input-content input {
+      font-size: 13px;
+      padding: 8px 10px;
+    }
+
+    label {
+      font-size: 13px;
+    }
   }
 }

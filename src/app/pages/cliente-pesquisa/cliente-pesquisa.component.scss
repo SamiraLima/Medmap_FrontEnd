@@ -1,6 +1,33 @@
 @import "../../styles/colors.scss";
 
+.resultados {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); // sempre 4 colunas
+  gap: 45px;
+  padding: 32px 16px;
+  margin: 0 auto;
+  margin-top: 10px;
+  max-width: 1200px;
+  justify-items: center;
 
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 40px;
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 20px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    padding: 20px;
+    justify-items: center;
+  }
+}
 
 .area-resultados {
   min-height: 400px; // ou o espaço necessário
@@ -13,15 +40,4 @@
   text-align: center;
   color: $text-primary;
   font-size: 18px;
-}
-
-.resultados {
-  padding: 32px;
-  margin-left: 75px;
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 45px;
-  justify-content: start; // <<< alinha o grid ao início
-  justify-items: start;   // <<< alinha os itens ao início também
 }
