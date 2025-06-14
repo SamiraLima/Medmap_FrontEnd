@@ -55,9 +55,9 @@ export interface EditarMedicamentoRequest {
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'http://localhost:8081/auth/login';
-  private medicamentosUrl = 'http://localhost:8083/ubs';
-  private registroUrl = 'http://localhost:8080/medicamento';
+  private loginUrl = 'https://auth-m70u.onrender.com/auth/login';
+  private medicamentosUrl = 'https://ubs-1nba.onrender.com/ubs';
+  private registroUrl = 'https://medicamento.onrender.com/medicamento';
   private token: string | null = null;
   private cnes: string | null = null;
   private ubsId: number | null = null;
@@ -158,7 +158,7 @@ export class AuthService {
   }
 
   cadastrar(dados: CadastroRequest): Observable<CadastroResponse> {
-    return this.http.post<CadastroResponse>('http://localhost:8083/ubs', dados, {
+    return this.http.post<CadastroResponse>('https://ubs-1nba.onrender.com/ubs', dados, {
       headers: { 'Content-Type': 'application/json' }
     });
   }
