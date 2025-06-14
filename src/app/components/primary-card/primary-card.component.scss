@@ -1,9 +1,8 @@
 @import "../../styles/colors.scss";
 
 .card {
-  width: 100%;
-  max-width: 250px;
-  min-height: 170px; // mais flexível que height fixo
+  width: 250px;
+  height: 180px; 
   background-color: $gray-bg;
   border-radius: 13px;
   box-shadow: 10px 10px 20px $gray-box-shadow, -10px -10px 20px $white-box-shadow;
