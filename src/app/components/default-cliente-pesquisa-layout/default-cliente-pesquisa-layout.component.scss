@@ -9,9 +9,10 @@ main {
 
 .busca-section {
   background-image: url('/fundo-pesquisa.svg');
-  background-size: cover;
+  background-size:auto;
   background-position: center;
   background-repeat: no-repeat;
+  
 
   color: white;
   padding: 50px; // 4rem

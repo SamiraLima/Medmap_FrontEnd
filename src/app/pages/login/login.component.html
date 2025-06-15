@@ -3,10 +3,10 @@
     btnTexto="Log In"
     pTexto="Ainda não tem uma conta?"
     aTexto=" Cadrastre-se"
-    [boxSize]="{ width: '33%', height: '70%' }"
     aLink="/cadastro"
+    
 >
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
         <app-primary-input
             formControlName="cnes"
             inputName="CNES"
@@ -37,9 +37,8 @@
         </div>
 
         <app-primary-button
-            btnTexto="Log in"
-            [btnSize]="{ width: '390px', height: '45px' }"
             type="submit"
+            texto="Log In"
         ></app-primary-button>
     </form>
 </app-default-login-layout>

@@ -8,7 +8,6 @@
   <!-- Mensagem visível somente se não houver medicamentos e não estiver carregando -->
   <p class="mensagem-vazia" *ngIf="!isLoading && medicamentos.length === 0">
     Nenhum medicamento cadastrado.
-    <a [routerLink]="['/registro']" class="cadastrar-link">Cadastrar um medicamento</a>
   </p>
 
   <!-- Cards exibidos somente se houver medicamentos -->

@@ -1,41 +1,59 @@
 @import "../../styles/colors.scss";
 
-
 .card {
-    width: 250px;
-    height: 170px;
-    background-color: $gray-bg;
-    border-radius: 13px;
-    box-shadow: 10px 10px 20px $gray-box-shadow, -10px -10px 20px $white-box-shadow;
-    font-family: Arial, sans-serif;
-    padding: 23px ;
-    border: none;
+  width: 250px;
+  height: 180px; 
+  background-color: $gray-bg;
+  border-radius: 13px;
+  box-shadow: 10px 10px 20px $gray-box-shadow, -10px -10px 20px $white-box-shadow;
+  font-family: Arial, sans-serif;
+  padding: 23px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-    
-  
-    .title {
-      font-size: 18px;
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+    color: $primary-color;
+  }
+
+  .dosage {
+    color: #6b7280;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .address {
+    font-size: 12px;
+    color: $text-primary;
+    font-weight: bold;
+    padding-top: 10px;
+
+    .location-name {
       font-weight: 600;
       color: $primary-color;
-     
-    }
-  
-    .dosage {
-      color: #6b7280; // Cinza médio
-      margin-bottom: 12px;
-      font-size: 14px;
-    }
-  
-    .address {
-      font-size: 12px;
-      color: $text-primary;
-      font-weight: bold;
-      padding-top: 10px;
-  
-      .location-name {
-        font-weight: 600;
-        color: $primary-color; // Azul forte
-      }
     }
   }
-  
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+    padding: 18px;
+    min-height: auto; // permite altura ajustar ao conteúdo
+
+    .title {
+      font-size: 16px;
+    }
+
+    .dosage {
+      font-size: 13px;
+      margin-bottom: 10px; // reduz espaçamento pra caber melhor
+    }
+
+    .address {
+      font-size: 11.5px;
+      padding-top: 8px;
+    }
+  }
+}

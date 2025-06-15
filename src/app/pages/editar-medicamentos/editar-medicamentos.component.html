@@ -1,6 +1,8 @@
 <app-default-registro-medicamento-layout
     titulo="Editar Medicamento"
     aLink="/funcionario"
+    btnTexto="Editar"
+
 >
     <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
         <app-second-input
@@ -26,9 +28,8 @@
         </div>
 
         <app-primary-button
-            btnTexto="Editar"
-            [btnSize]="{ width: '490px', height: '48px' }"
             type="submit"
+            texto="Editar"
         ></app-primary-button>
     </form>
 </app-default-registro-medicamento-layout>

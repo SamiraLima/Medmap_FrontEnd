@@ -1,59 +1,113 @@
 @import "../../styles/colors.scss";
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: $gray-bg;
-    height: 93vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $gray-bg;
+  height: 93vh;
+  padding: 20px; // evita colar nas bordas em telas pequenas
+}
+
+h1 {
+  color: $primary-color;
+  font-size: 30px;
+  margin-bottom: 45px;
+  transform: translateY(-20px);
+  text-align: center;
+}
+
+.box-registro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  padding: 30px;
+
+  width: 100%;
+  max-width: 750px;
+  height: auto; // evita altura fixa que pode quebrar em telas menores
+  
+}
+
+header {
+  background-color: $gray-bg;
+  border-bottom: 1px solid rgba(102, 102, 102, 0.3);
+  padding: 11px;
+  width: 100%;
+}
+
+.btnback {
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+img {
+  height: 25px;
+  width: 35px;
+}
+
+span {
+  font-size: 15px;
+  color: $text-primary;
+  font-weight: 500;
+}
+
+
+
+/* ✅ Responsividade */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
   }
 
+  .box-registro {
+    padding: 20px;
+    max-width: 520px;
+  }
 
+  .btnRegistrar {
+    font-size: 0.9rem;
+    padding: 10px;
+    height: 42px;
+  }
 
-h1{
-    color: $primary-color;
-    font-size: 30px;
-    margin-bottom: 45px;
-    transform: translateY(-20px);
+  img {
+    height: 20px;
+    width: 28px;
+  }
+
+  span {
+    font-size: 14px;
+  }
 }
 
-.box-registro{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 13px;
-    padding: 30px;
-    height: 550px;
-    }
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
 
-header{
-    background-color: $gray-bg;
-    border-bottom: 1px solid rgba(102, 102, 102, 0.3);
-    padding: 11px;
+  .box-registro {
+    padding: 15px;
+    max-width: 280px;
+  }
+
+  .btnRegistrar {
+    font-size: 0.85rem;
+    padding: 8px;
+    height: 38px;
+  }
+
+  .btnback {
+    padding-left: 5px;
+  }
 }
-
-button{
-    border: none;
-    background: none;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    cursor: pointer;
-}
-
-img{
-    height: 25px;
-    width: 35px;
-    
-    
-}
-
-span{
-    font-size: 15px;
-    color: $text-primary;
-    font-weight: 500;
-}
-
-

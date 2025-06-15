@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators';
 export class MedicamentoService {
   private http = inject(HttpClient);
 
-  private medicamentosUrl = 'http://localhost:8082/usuarios/medicamentos';
-  private ubsUrl = 'http://localhost:8083/ubs';
+  private medicamentosUrl = 'https://usuario-8qd5.onrender.com/usuarios/medicamentos';
+  private ubsUrl = 'https://ubs-1nba.onrender.com/ubs';
 
   getMedicamentosComUbs(): Observable<any[]> {
     return forkJoin({

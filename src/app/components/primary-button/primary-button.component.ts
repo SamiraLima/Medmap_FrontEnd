@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './primary-button.component.scss'
 })
 export class PrimaryButtonComponent {
-  @Input() btnTexto: string = "";
-  @Input() btnSize: { width?: string; height?: string } = {};
+  @Input() type: 'button' | 'submit' = 'submit';
+  @Input() texto: string = '';
 
 }
