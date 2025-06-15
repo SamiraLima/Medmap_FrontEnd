@@ -14,5 +14,5 @@ export const routes: Routes = [
   { path: "editar/:id", component: EditarMedicamentosComponent, canActivate: [authGuard] }, // Adicionado :id
   { path: "cliente", component: ClientePesquisaComponent },
   { path: "funcionario", component: FuncionarioComponent, canActivate: [authGuard] },
-  { path: "", redirectTo: "/login", pathMatch: "full" }
+  { path: "", redirectTo: "login", pathMatch: "full" }
 ];
