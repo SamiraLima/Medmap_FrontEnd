@@ -4,8 +4,9 @@
     pTexto="Ainda não tem uma conta?"
     aTexto=" Cadrastre-se"
     aLink="/cadastro"
+    
 >
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
         <app-primary-input
             formControlName="cnes"
             inputName="CNES"
@@ -37,6 +38,7 @@
 
         <app-primary-button
             type="submit"
+            texto="Log In"
         ></app-primary-button>
     </form>
 </app-default-login-layout>

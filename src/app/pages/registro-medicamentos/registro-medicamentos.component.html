@@ -1,7 +1,6 @@
 <app-default-registro-medicamento-layout
     titulo="Registro de Medicamento"
     aLink="/funcionario"
-    btnTexto="Registrar"
 
 >
     <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
@@ -29,6 +28,7 @@
 
         <app-primary-button
             type="submit"
+            texto="Registrar"
         ></app-primary-button>
     </form>
 </app-default-registro-medicamento-layout>

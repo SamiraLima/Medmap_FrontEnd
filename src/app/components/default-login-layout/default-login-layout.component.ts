@@ -14,6 +14,5 @@ export class DefaultLoginLayoutComponent {
   @Input() aTexto: string = "";
   @Input() pTexto: string = "";
   @Input() aLink: string = '';
-  @Input() btnTexto: string = "";
 
 }

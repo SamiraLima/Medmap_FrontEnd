@@ -1,6 +1,6 @@
 <header>
     <section>
-        <button [routerLink]="aLink">
+        <button [routerLink]="aLink" class="btnback">
             <img src="voltar.svg" alt="">
             <span>Back</span>
         </button>
@@ -12,6 +12,5 @@
      <section class="box-registro">
         <h1>{{titulo}}</h1>
         <ng-content></ng-content>
-        <button class="btnRegistrar">{{btnTexto}}</button>
     </section>
 </main>

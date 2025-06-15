@@ -59,25 +59,7 @@ span {
   font-weight: 500;
 }
 
-.btnRegistrar {
-  background: linear-gradient(90deg, $secondary-color, $primary-color);
-  border: none;
-  box-shadow: 5px 5px 10px $gray-box-shadow, -5px -5px 10px $white-box-shadow;
-  width: 100%;
-  max-width: 480px;
-  color: white;
-  padding: 12px;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-top: 18px;
-  cursor: pointer;
-  height: 48px;
 
-  &:hover {
-    background: #368197;
-  }
-}
 
 /* ✅ Responsividade */
 
