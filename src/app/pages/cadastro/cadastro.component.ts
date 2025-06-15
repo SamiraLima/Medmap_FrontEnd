@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';              // ← importe aqui
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DefaultLoginLayoutComponent } from '../../components/default-login-layout/default-login-layout.component';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [DefaultLoginLayoutComponent, ReactiveFormsModule, PrimaryInputComponent, PrimaryButtonComponent],
+  imports: [DefaultLoginLayoutComponent, ReactiveFormsModule, PrimaryInputComponent, PrimaryButtonComponent,CommonModule],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss'
 })

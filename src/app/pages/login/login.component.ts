@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';              // ← importe aqui
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DefaultLoginLayoutComponent } from '../../components/default-login-layout/default-login-layout.component';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
@@ -9,7 +10,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [DefaultLoginLayoutComponent, ReactiveFormsModule, PrimaryInputComponent, PrimaryButtonComponent],
+  imports: [
+    CommonModule,                                       // ← adicione aqui
+    DefaultLoginLayoutComponent,
+    ReactiveFormsModule,
+    PrimaryInputComponent,
+    PrimaryButtonComponent
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
